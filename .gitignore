@@ -1,0 +1,13 @@
+# Môi trường ảo
+.venv/
+venv/
+
+# Dữ liệu gốc
+data/raw/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.pyc
