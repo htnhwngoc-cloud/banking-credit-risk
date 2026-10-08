@@ -1,0 +1,36 @@
+model:
+  path: "models/best_model.joblib"
+  threshold: 0.3763          # ngưỡng tối ưu chi phí (validation set, C_FN=5, C_FP=1)
+  cost_fn: 5                 # chi phí 1 ca False Negative (bỏ sót vỡ nợ)
+  cost_fp: 1                 # chi phí 1 ca False Positive (cảnh báo nhầm)
+
+artifacts:
+  metadata:     "artifacts/metadata.json"
+  winsorize:    "artifacts/winsorize_thresholds.json"
+  val_csv:      "data/processed/val.csv"   # dùng để lấy thứ tự cột
+
+# Dải rủi ro [lower, upper) — đơn vị xác suất
+risk_bands:
+  low:       [0.00, 0.20]
+  medium:    [0.20, 0.3763]
+  high:      [0.3763, 0.60]
+  very_high: [0.60, 1.00]
+
+risk_band_labels:
+  low:       "🟢 Thấp"
+  medium:    "🟡 Trung bình"
+  high:      "🟠 Cao"
+  very_high: "🔴 Rất cao"
+
+risk_band_actions:
+  low:       "Theo dõi thường kỳ — không cần can thiệp"
+  medium:    "Giám sát tăng cường — xem xét tần suất nhắc nhở"
+  high:      "Cảnh báo sớm — hạn chế hạn mức, tư vấn chủ động"
+  very_high: "Can thiệp ngay lập tức — review hồ sơ và đề xuất tái cơ cấu"
+
+disclaimer: >
+  ⚠️ **Giới hạn quan trọng**: Mô hình được huấn luyện trên dữ liệu thẻ tín dụng
+  Đài Loan năm 2005 (30.000 khách hàng). Kết quả chỉ mang tính minh họa học thuật
+  và KHÔNG nên áp dụng trực tiếp vào sản phẩm tài chính thực tế mà không có tái
+  kiểm định trên dữ liệu địa phương. Các ước tính tài chính dựa trên giả định do
+  người làm đặt ra. Tương quan trong mô hình không đồng nghĩa với quan hệ nhân quả.
