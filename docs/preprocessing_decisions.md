@@ -1,4 +1,4 @@
-# Nhật Ký Quyết Định Tiền Xử Lý Dữ Liệu (Preprocessing Decisions)
+# Quyết Định Tiền Xử Lý Dữ Liệu (Preprocessing Decisions)
 
 Tài liệu này ghi lại các quyết định xử lý dữ liệu ở giai đoạn tiền xử lý, dựa trên kết quả phân tích khám phá dữ liệu (EDA) tại `reports/eda/data_issues.md`.
 
@@ -22,7 +22,7 @@ Tài liệu này ghi lại các quyết định xử lý dữ liệu ở giai đ
 - **Quyết định**: Giữ nguyên các mã -2 và 0, không xóa và không gộp mù quáng. Khi tính các biến mới (như số tháng trễ, mức trễ), chỉ coi các giá trị > 0 là có trễ hạn (mã -2, -1, 0 được coi là không trễ).
 - **Lý do**: Đây có thể là những trạng thái thanh toán bình thường nhưng không được liệt kê (ví dụ: 0 là nợ quay vòng đang trả, -2 là không có giao dịch/dư nợ). Do số lượng lớn và có ý nghĩa thống kê cao, việc xóa hoặc gộp sẽ làm hỏng cấu trúc dữ liệu và đánh mất tín hiệu.
 
-## 4. Xử lý giá trị thiếu (Missing values)
+## 4. Xử lý giá trị thiếu   
 - **Vấn đề**: Dữ liệu có thể chứa giá trị thiếu (NaN).
 - **Bằng chứng từ EDA**: Không phát hiện giá trị NaN.
 - **Quyết định**: Không thực hiện gán giá trị thiếu (imputation). Bổ sung hàm kiểm tra (assert) ở cuối pipeline để báo lỗi nếu dữ liệu mới có chứa NaN.

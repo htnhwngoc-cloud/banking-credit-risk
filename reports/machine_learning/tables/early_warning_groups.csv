@@ -1,0 +1,4 @@
+group_id,description,signal,total_customers,default_count,default_rate,ci_lower_95,ci_upper_95,recommended_action
+EW-1,Bat dau tre han (pay_sep = 1),pay_sep == 1,2557,872,0.341,0.3229,0.3596,"Nhac nho tu dong, tu van tra no"
+EW-2,Xu huong tre han tang (delay_trend > 0.143),delay_trend > 0.143,4840,1808,0.3736,0.36,0.3873,"Han che han muc tam thoi, tu van tai co cau no"
+EW-3,Han muc cuc thap Q1 (<=50.000 NTD),limit_group == 0,5355,1699,0.3173,0.3049,0.3299,"Review uu tien hang tuan, can thiep chu dong"
